@@ -1,0 +1,20 @@
+<h1>Ajouter une Recette</h1>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <mat-form-field appearance="fill">
+    <mat-label>Nom de la recette</mat-label>
+    <input matInput formControlName="name" />
+    <mat-error *ngIf="form.get('name')?.hasError('required')">
+      Ce champ est requis.
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Description</mat-label>
+    <textarea matInput formControlName="description"></textarea>
+  </mat-form-field>
+
+  <div class="actions">
+    <button mat-button (click)="onCancel()">Annuler</button>
+    <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">Ajouter</button>
+  </div>
+</form>
